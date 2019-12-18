@@ -10,7 +10,7 @@ In your terminal:
 
 On Heroku:
 
-4) Using postman you can send a POST request to https://api-node-info.herokuapp.com/ (or localhost:5000 if you are running the express.js on your terminal) with the following instructions:
+4) Using postman you can send a POST request to ```https://api-node-info.herokuapp.com/``` (or localhost:5000 if you are running the express.js on your terminal) with the following instructions:
 
     a) Header:
 
