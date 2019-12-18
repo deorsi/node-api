@@ -6,7 +6,7 @@ Welcome to API Node Version - test project
 2) Run ```npm install``` on command line to install dependencies;
 3) Then run ```npm start``` on the command line to start the server.
 
-    3.1) Using postman you can send a POST request to localhost:3003 with the following instructions:
+    3.1) Using postman you can send a POST request to localhost:5000 with the following instructions:
 
     a) Header:
 

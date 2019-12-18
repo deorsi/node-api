@@ -40,8 +40,8 @@ if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
 }
 
 
-app.listen(3003, function () {
-  console.log('Express server listening on port 3003');
+app.listen(process.env.PORT || 5000, function () {
+  console.log('Express server listening on port 5000');
 });
 
 
