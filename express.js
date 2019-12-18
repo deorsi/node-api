@@ -1,55 +1,49 @@
-(function () {
+// Set the 'NODE_ENV' variable
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-  'use strict'
+// console.log("process.env.NODE_ENV", process.env.NODE_ENV);
 
-  // Set the 'NODE_ENV' variable
-  process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+let express = require('express'),
+  config = require('./config'),
+  bodyParser = require('body-parser'),
+  authService = require('./services/authService'),
+  contentService = require('./services/contentService'),
+  logger = require('morgan');
 
-  console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+let app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-  let express = require('express'),
-    request = require('request'),
-    config = require('./config'),
-    bodyParser = require('body-parser'),
-    authService = require('./services/authService'),
-    transformContent = require('./services/transformContent'),
-    logger = require('morgan');
+// Use the 'NODE_ENV' variable to activate the 'morgan' logger or not
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+  app.use(logger('dev'));
+}
 
-  let app = express();
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
+// Routing - If it gets bigger, put in a different file or directory called routes
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
 
-  // Use the 'NODE_ENV' variable to activate the 'morgan' logger or not
-  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
-    app.use(logger('dev'));
-  }
+  app.route('/')
+    .post(authService.checkForToken, contentService.getContentAndTransform);
 
-  // Routing - If it gets bigger, put in a different file or directory called routes
-  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+  app.route('/failauth')
+    .post(contentService.getContentAndTransform);
 
-    app.route('/')
-      .post(authService.checkForToken, transformContent.transformedContent);
+  app.route('/auth')
+    .post(authService.checkForToken, function (req, res) {
+      let token = config.getToken();
+      res.send({ token: token });
+    });
 
-    app.route('/failauth')
-      .post(transformContent.transformedContent);
-
-    app.route('/auth')
-      .post(authService.checkForToken, function (req, res) {
-        let token = config.getToken();
-        res.send({ token: token });
-      });
-
-  } else if (process.env.NODE_ENV === 'production') {
-    app.route('/')
-      .post(authService.checkForToken, transformContent.transformedContent);
-  }
+} else if (process.env.NODE_ENV === 'production') {
+  app.route('/')
+    .post(authService.checkForToken, contentService.getContentAndTransform);
+}
 
 
-  app.listen(3003, function () {
-    console.log('Express server listening on port 3003');
-  });
+app.listen(3003, function () {
+  console.log('Express server listening on port 3003');
+});
 
-})()
 
 
 
