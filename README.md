@@ -16,14 +16,14 @@ On Heroku:
 
     * Content-Type  application/json
     
-    b) Body (request payload RAW):
+    b) Body (request payload RAW, this will work until december 31, after that it needs to update with a present date):
     ```
     {
         "Language": "ENG",
         "Currency": "USD",
         "Destination": "MCO",
-        "DateFrom": "11/26/2019",
-        "DateTO": "11/29/2019",
+        "DateFrom": "12/18/2019",
+        "DateTO": "12/31/2019",
         "Occupancy": {
             "AdultCount": "1",
             "ChildCount": "1",
