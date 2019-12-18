@@ -22,6 +22,6 @@
   "devDependencies": {
     "expect.js": "~0.3.1",
     "mocha": "~2.4.5",
-    "superagent": "^1.8.5"
+    "superagent": "^5.0.2"
   }
 }
