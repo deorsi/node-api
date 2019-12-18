@@ -4,7 +4,6 @@
   "description": "",
   "main": "express.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha development.test.js",
     "start": "node express.js"
   },
   "author": "deorsi",
@@ -21,7 +20,7 @@
   },
   "devDependencies": {
     "expect.js": "~0.3.1",
-    "mocha": "~2.4.5",
-    "superagent": "^1.8.5"
+    "mocha": "^6.2.2",
+    "superagent": "^5.1.2"
   }
 }

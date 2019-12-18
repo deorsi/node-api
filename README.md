@@ -13,7 +13,7 @@ Welcome to API Node Version - test project
     * Content-Type  application/json
     
     b) Body (request payload RAW):
-    
+    ```
     {
         "Language": "ENG",
         "Currency": "USD",
@@ -26,6 +26,6 @@ Welcome to API Node Version - test project
             "ChildAges": ["10"]
         }
     }
-
+    ```
 4) You'll see the tranformed data from the Service API on the postman body.
 
