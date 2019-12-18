@@ -2,11 +2,15 @@ Welcome to API Node Version - test project
 
 # Testing
 
+In your terminal:
+
 1) Clone this repo with ```git clone https://github.com/deorsi/node-api```;
 2) Run ```npm install``` on command line to install dependencies;
-3) Then run ```npm start``` on the command line to start the server.
+3) Then run ```npm start``` on the command line to start the server and follow the step 4.
 
-    3.1) Using postman you can send a POST request to localhost:5000 with the following instructions:
+On Heroku:
+
+4) Using postman you can send a POST request to https://api-node-info.herokuapp.com/ (or localhost:5000 if you are running the express.js on your terminal) with the following instructions:
 
     a) Header:
 
@@ -27,5 +31,5 @@ Welcome to API Node Version - test project
         }
     }
     ```
-4) You'll see the tranformed data from the Service API on the postman body.
+5) You should see the tranformed data from the Service API on the postman body.
 
